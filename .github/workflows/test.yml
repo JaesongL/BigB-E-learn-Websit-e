@@ -22,3 +22,7 @@ jobs:
         uses: chabad360/htmlproofer@master
         with:
           directory: "./"
+          
+      - name: Build and deploy to GitHub Pages
+        uses: EdricChan03/action-build-deploy-ghpages@v2.6.0
+
