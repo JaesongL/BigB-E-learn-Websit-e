@@ -1,19 +1,24 @@
-name: HTML Check
+name: BigB-website Actions CI
 
 on:
   push:
-
+    branches: [main]
+  pull_request:
+    branches: [main]
+   
 jobs:
-  Test:
+  build:
     runs-on: ubuntu-latest
-    env:
-      HTML5_ACTION_DEBUG: true
+    
     steps:
-        - uses: actions/checkout@v2 # Requried will all actions
-        - name: Checks HTML5
-          uses: Cyb3r-Jak3/html5validator-action@v7.1.1
-          with:
-            root: ./
-            log_level: INFO
-            css: true
-          continue-on-error: true
+      - uses: actions/checkout@v2
+      - name: HTML Preview
+        id: html_preview
+        uses: pavi2410/html-preview-action@v2
+        with:
+         html_file: 'index.html'
+       
+      - name: Check HTML
+        uses: chabad360/htmlproofer@master
+        with:
+          directory: "./"
