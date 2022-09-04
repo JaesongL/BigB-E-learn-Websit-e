@@ -23,7 +23,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
   
-      - name: HTML-Proofer
+      - name: HTML Proofer
         uses: chabad360/htmlproofer@master
         with:
           directory: "./"
